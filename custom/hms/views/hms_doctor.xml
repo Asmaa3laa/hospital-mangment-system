@@ -20,7 +20,7 @@
         <menuitem id="hms_root_doctors_data"
                   name="doctors"
                   parent="hms_root_menu"
-                  action="action_doctor"
+                  action="action_doctor" groups="hms_manager_group"
         />
 
      </data>
