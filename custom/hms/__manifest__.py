@@ -2,7 +2,10 @@
     "name": "hms",
     "version": "1.0.7",
     "description": "Hospitals Management System",
-    "depends": [],
+    "depends": [
+        "crm"
+    ],
+
     "data": [
         'views/hms_patient.xml',
         'views/hms_department.xml',

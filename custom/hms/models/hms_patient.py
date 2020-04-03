@@ -1,5 +1,7 @@
 from odoo import models, fields, api
 import re
+from datetime import date, datetime
+from dateutil.relativedelta import relativedelta
 
 from odoo.exceptions import UserError
 
@@ -27,7 +29,7 @@ class HmsPatient(models.Model):
     )
     pcr = fields.Boolean(default=False)
     Address = fields.Text()
-    Age = fields.Integer()
+    Age = fields.Char(compute="compute_age", store=True)
     image = fields.Binary(string='Image')
     department_id = fields.Many2one(comodel_name='hms.department')
     capacity = fields.Integer(related="department_id.capacity")
@@ -60,3 +62,13 @@ class HmsPatient(models.Model):
              }
         else:
             self.pcr = False
+
+    @api.depends("birthDate")
+    @api.multi
+    def compute_age(self):
+        if self.birthDate:
+            d1 = datetime.strptime(str(self.birthDate), "%Y-%m-%d").date()
+
+            d2 = date.today()
+
+            self.Age = relativedelta(d2, d1).years

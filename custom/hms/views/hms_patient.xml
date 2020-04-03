@@ -26,7 +26,9 @@
                         <group>
                             <field name="firstName"/>
                             <field name="lastName"/>
-                            <field name="Age" widget="char"/>
+                            <field name="birthDate"/>
+                            <!--widget="char"-->
+                            <field name="Age" />
                             <field name = "email"/>
                             <field name="pcr"/>
                         </group>
