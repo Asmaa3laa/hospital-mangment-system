@@ -35,6 +35,7 @@ class HmsPatient(models.Model):
     capacity = fields.Integer(related="department_id.capacity")
     patient_histories = fields.One2many(comodel_name="log.history", inverse_name="patient_id")
     state = fields.Selection(related="patient_histories.state")
+
     email = fields.Char()
 
     _sql_constraints = [
@@ -51,7 +52,7 @@ class HmsPatient(models.Model):
 
     @api.onchange("Age")
     def onchange_pcr(self):
-        if self.Age < 30:
+        if int(self.Age) < 30:
             self.pcr = True
             return {
                 # "domain": {'track_id': new_domain},

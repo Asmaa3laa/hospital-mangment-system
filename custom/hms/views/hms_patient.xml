@@ -30,7 +30,9 @@
                             <!--widget="char"-->
                             <field name="Age" />
                             <field name = "email"/>
+                            <field name="bloodType"/>
                             <field name="pcr"/>
+
                         </group>
                         <group>
                             <field name="crRatio" attrs="{'required':[('pcr' , '=' , True)]}"/>

@@ -6,7 +6,7 @@ class InheritCustomer(models.Model):
     _inherit = "res.partner"
 
     related_patient_id = fields.Many2one(comodel="hms.patient")
-    vat = fields.Char(required = True)
+    vat = fields.Char(required=True)
 
     # related_patient_id = fields.Char()
     @api.model
@@ -15,7 +15,7 @@ class InheritCustomer(models.Model):
         result = self.env["hms.patient"].search([("email", "=", email)])
         print("*************")
         print(result.email)
-        if result.email == False:
+        if result.email==False:
             new_record =super().create(vals)
         else:
             raise UserError("this email is already exist")
